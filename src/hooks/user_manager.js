@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   auth,
   googleProvider,
+  githubProvider,
   signOut,
   onAuthStateChanged,
   signInWithRedirect,
@@ -10,7 +11,6 @@ import {
 
 
 const user_manager = (initialUser = '') => {
-
 
 
   const [user, setUser] = useState(initialUser);
@@ -24,7 +24,7 @@ const user_manager = (initialUser = '') => {
       signInWithRedirect(auth, googleProvider);
     }
     else if (platform === 'sign in with github') {
-
+      signInWithRedirect(auth, githubProvider);
     }
   }
 
@@ -39,7 +39,9 @@ const user_manager = (initialUser = '') => {
   const authStateChange = () => {
     onAuthStateChanged(auth, (currentUser) => {
 
-      if (currentUser) setUser(currentUser);
+      if (currentUser) {
+        setUser(currentUser);
+      }
       else setUser(null);
 
     });

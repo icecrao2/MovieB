@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "firebase": "^9.9.4"
+    "firebase": "^9.9.4",
+    "react-router": "^6.4.0",
+    "react-router-dom": "^6.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

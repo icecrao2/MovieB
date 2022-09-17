@@ -5,33 +5,32 @@ import {
 } from '../components/login';
 
 import { useEffect } from 'react';
+import { page_mover } from '../hooks/page_mover.js';
 
-export const LoginPage = ({ userManager }) => {
+export const LoginPage = ({ user, login, authStateChange }) => {
 
-  const {
-    user,
-    login,
-    logout,
-    authStateChange,
-  } = userManager();
+  const { movePage } = page_mover();
+
 
   useEffect(() => {
     authStateChange();
 
     if (user) {
       console.log(user);
+      movePage('/main');
     }
     else {
       console.log('none');
     }
   }, [user]);
 
-  
+
   const onLogin = (evt) => {
     evt.preventDefault();
     login(evt.currentTarget.children[1].innerText);
   }
 
+  /*
   const onLogout = () => {
     logout(() => {
       console.log('success');
@@ -40,6 +39,7 @@ export const LoginPage = ({ userManager }) => {
         console.log('failed!');
       });
   }
+  */
 
 
   const style = {
@@ -65,7 +65,7 @@ export const LoginPage = ({ userManager }) => {
           src={'../../public/img/github.png'}
           alt={'github login img'}
           color={'white'}
-          onClick={onLogout} />
+          onClick={onLogin} />
       </TransparentCard>
     </main>
   )
