@@ -4,7 +4,43 @@ import {
   LoginBtn,
 } from '../components/login';
 
-export const LoginPage = () => {
+import { useEffect } from 'react';
+
+export const LoginPage = ({ userManager }) => {
+
+  const {
+    user,
+    login,
+    logout,
+    authStateChange,
+  } = userManager();
+
+  useEffect(() => {
+    authStateChange();
+
+    if (user) {
+      console.log(user);
+    }
+    else {
+      console.log('none');
+    }
+  }, [user]);
+
+  
+  const onLogin = (evt) => {
+    evt.preventDefault();
+    login(evt.currentTarget.children[1].innerText);
+  }
+
+  const onLogout = () => {
+    logout(() => {
+      console.log('success');
+    },
+      () => {
+        console.log('failed!');
+      });
+  }
+
 
   const style = {
     display: 'flex',
@@ -13,7 +49,6 @@ export const LoginPage = () => {
     height: '100%',
   };
 
-
   return (
     <main style={style}>
       <TransparentCard>
@@ -21,12 +56,16 @@ export const LoginPage = () => {
         <LoginBtn
           content={'sign in with google'}
           src={'../../public/img/google.png'}
-          alt={'google login img'} />
+          alt={'google login img'}
+          backgroundColor={'white'}
+          onClick={onLogin} />
 
         <LoginBtn
           content={'sign in with github'}
           src={'../../public/img/github.png'}
-          alt={'github login img'} />
+          alt={'github login img'}
+          color={'white'}
+          onClick={onLogout} />
       </TransparentCard>
     </main>
   )
