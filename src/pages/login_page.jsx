@@ -7,20 +7,18 @@ import {
 import { useEffect } from 'react';
 import { page_mover } from '../hooks/page_mover.js';
 
-export const LoginPage = ({ user, login, authStateChange }) => {
+export const LoginPage = ({ user, login, checkAuth }) => {
 
   const { movePage } = page_mover();
 
 
   useEffect(() => {
-    authStateChange();
+    //checkAuth();
 
     if (user) {
-      console.log(user);
       movePage('/main');
     }
     else {
-      console.log('none');
     }
   }, [user]);
 

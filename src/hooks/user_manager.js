@@ -36,6 +36,12 @@ const user_manager = (initialUser = '') => {
     );
   }
 
+  const checkAuth = () => {
+
+    user ? console.log(user) : authStateChange();
+
+  }
+
   const authStateChange = () => {
     onAuthStateChanged(auth, (currentUser) => {
 
@@ -47,7 +53,7 @@ const user_manager = (initialUser = '') => {
     });
   }
 
-  return { login, logout, user, authStateChange };
+  return { login, logout, user, checkAuth };
 }
 
 

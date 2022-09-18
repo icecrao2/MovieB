@@ -4,6 +4,10 @@ import {
   MainPage,
 } from './pages';
 
+import {
+  Navigation,
+} from './components/organizations';
+
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -18,19 +22,30 @@ export default function App() {
   const {
     user,
     login,
-    authStateChange,
+    checkAuth,
   } = user_manager();
+
+  //상태 확인
+  checkAuth();
+
+
+  const divStyle = {
+    width: '100%',
+    height: '100%',
+  };
 
 
   return (
 
-    <div>
-      <span>이게 맞냐?</span>
+    <div style={divStyle}>
+
+      {user ? <Navigation /> : ''}
+
       <Routes>
         <Route path="/"
-          element={<LoginPage user={user} login={login} authStateChange={authStateChange} />} />
+          element={<LoginPage user={user} login={login} checkAuth={checkAuth} />} />
         <Route path="/main/*"
-          element={<MainPage />} />
+          element={<MainPage user={user} checkAuth={checkAuth} />} />
       </Routes>
     </div>
 

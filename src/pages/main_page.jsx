@@ -2,21 +2,24 @@
 import { Routes, Route } from 'react-router-dom';
 
 import {
-  Testing,
-  LoginPage,
 } from '../pages';
-export const MainPage = () => {
 
+
+export const MainPage = ({ user }) => {
+
+  //checkAuth();
 
   return (
-    < Routes >
-      <Route path='one' element={
-        <Testing />}>
-      </Route>
+    <div>
+      < Routes >
+        <Route path='/'>
 
-      <Route path='two' >
-        two!
-      </Route>
-    </ Routes >
+        </Route>
+
+        <Route path='two' >
+          two!
+        </Route>
+      </ Routes >
+    </div>
   )
 }
