@@ -50,6 +50,7 @@
     font-size:15px;
     font-weight:600;
     transition: border 0.1s ease-in-out;
+    width:100%;
   }
   
   .unActiveLink:hover {
@@ -68,15 +69,35 @@
   }
   
   .activeLink {
-  
+    width:100%;
     transition: 0.5s ease-in-out;
-    border-top:2px solid black;
-    border-bottom:2px solid black;
-    color:black;
+    color:white;
     font-weight:800;
     text-decoration:none;
     padding-top: 3px;
     padding-bottom:3px;
     font-size:15px;
   }
+}
+
+
+
+.mobileUl {
+  z-index:-1;
+  flex:1;
+  position:relative;
+  top: -30px;
+  right:87px;
+  transition-property: top;
+  transition-duration: 2s;
+}
+
+
+.mobileLi {
+  border-top: 1px solid black;
+  border-radius:2px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  background-color:orange;
 }
