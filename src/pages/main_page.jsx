@@ -1,23 +1,26 @@
 
 import { Routes, Route } from 'react-router-dom';
+import { movie_list } from '../hooks/movie_list.js';
 
 import {
+  NowPlaying
 } from '../pages';
 
 
-export const MainPage = ({ user }) => {
+export const MainPage = ({ }) => {
 
   //checkAuth();
+  const { movieList, handleMovieList } = movie_list();
 
   return (
-    <div>
+    <div style={{width:'100%',
+                height: '100%'}}>
       < Routes >
-        <Route path='/'>
-
-        </Route>
+        <Route path='now_playing'
+          element={<NowPlaying movieList={movieList} handleMovieList={handleMovieList} />} />
 
         <Route path='two' >
-          two!
+
         </Route>
       </ Routes >
     </div>
