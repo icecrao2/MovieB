@@ -7,17 +7,19 @@ import {
 } from '../pages';
 
 
-export const MainPage = ({ }) => {
+export const MainPage = ({ user }) => {
 
   //checkAuth();
   const { movieList, handleMovieList } = movie_list();
 
   return (
-    <div style={{width:'100%',
-                height: '100%'}}>
+    <div style={{
+      width: '100%',
+      height: '100%'
+    }}>
       < Routes >
         <Route path='now_playing'
-          element={<NowPlaying movieList={movieList} handleMovieList={handleMovieList} />} />
+          element={<NowPlaying user={user} movieList={movieList} handleMovieList={handleMovieList} />} />
 
         <Route path='two' >
 

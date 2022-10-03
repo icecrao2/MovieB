@@ -37,3 +37,11 @@
   cursor:pointer;
   color:yellow;
 }
+
+.link {
+  margin: 10px 10px 10px 10px;
+  flex:1;
+  min-width: 300px;
+  display:flex;
+  flex-direction:column;
+}

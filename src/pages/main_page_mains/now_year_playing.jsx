@@ -4,10 +4,13 @@ import styles from '../../styles/now_playing/now_playing.module.css';
 
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { writeDibedData } from '../../firebase/DB/databaseAccess.js';
+import { pages } from '../../json/navs.js';
+import {
+  Link,
+} from 'react-router-dom';
 
-
-
-export const NowPlaying = ({ movieList, handleMovieList }) => {
+export const NowPlaying = ({ user, movieList, handleMovieList }) => {
 
 
   useEffect(
@@ -21,6 +24,7 @@ export const NowPlaying = ({ movieList, handleMovieList }) => {
     []
   );
 
+
   //포스터 클릭 핸들러
   const onClickPoster = (evt) => {
     console.log(evt.target);
@@ -28,29 +32,32 @@ export const NowPlaying = ({ movieList, handleMovieList }) => {
 
   //찜하기 버튼 핸들러
   const onClickDibdOn = (evt) => {
-    console.log(evt.target);
+    writeDibedData(user.email.replace('.', '*'), evt.currentTarget.id);
+    evt.currentTarget.style.color = 'yellow';
   }
 
-  
-  
-  console.log(movieList);
-  
+
   return (
     <main className={styles.main}>
-      
-      {movieList.map((movie, index)=>{
+
+      {movieList.map((movie, index) => {
         return (
           <div key={index} id={movie.id} className={styles.card}>
-            
+
             <div className={styles.icon}>
-              <span id={movie.id}><FontAwesomeIcon icon={faStar} size="lg" /></span>
+              <span id={movie.id}
+                onClick={onClickDibdOn}>
+                <FontAwesomeIcon icon={faStar} size="lg" />
+              </span>
             </div>
-            
-            <img onClick={onClickPoster} className={styles.poster} 
-              src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}></img>
+
+            <Link to={`${pages.link}/${movie.id}`} className={styles.link} >
+              <img onClick={onClickPoster} className={styles.poster}
+                src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}></img>
+            </Link>
           </div>)
       })}
-        
-    </main>
+
+    </main >
   );
 }

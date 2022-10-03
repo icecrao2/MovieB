@@ -8,6 +8,14 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import {
+  getDatabase,
+  ref,
+  set,
+  update,
+  push,
+  child,
+} from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,7 +28,10 @@ const firebaseConfig = {
   storageBucket: "movieb-ff879.appspot.com",
   messagingSenderId: "869641856025",
   appId: "1:869641856025:web:315a0275da629136e7f688",
-  measurementId: "G-M0CDPV9F0T"
+  measurementId: "G-M0CDPV9F0T",
+  databaseURL: "https://movieb-ff879-default-rtdb.firebaseio.com"
+
+
 };
 
 // Initialize Firebase
@@ -30,7 +41,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
-
+const database = getDatabase(app);
 
 export {
   auth,
@@ -39,4 +50,10 @@ export {
   signInWithRedirect,
   signOut,
   onAuthStateChanged,
+  database,
+  ref,
+  set,
+  update,
+  push,
+  child,
 }

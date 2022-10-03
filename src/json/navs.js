@@ -15,4 +15,9 @@ const nav = [
   },
 ];
 
-export { nav };
+const pages = {
+  name: '상세 페이지',
+  link: '/main/detail'
+}
+
+export { nav, pages };
