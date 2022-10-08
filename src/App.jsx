@@ -9,7 +9,7 @@ import {
 } from './components/organizations';
 
 import { Routes, Route } from 'react-router-dom';
-
+import { useEffect } from 'react';
 
 import {
   user_manager,
@@ -24,6 +24,14 @@ export default function App() {
     login,
     checkAuth,
   } = user_manager();
+
+  useEffect(
+    () => {
+      window.localStorage.setItem('email', user.email);
+    },
+    [user]
+  );
+
 
   //상태 확인
   checkAuth();
