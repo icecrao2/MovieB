@@ -17,6 +17,7 @@ export const LoginPage = ({ user, login, checkAuth }) => {
 
     if (user) {
       movePage('/main');
+      window.localStorage.setItem('email', user.email);
     }
     else {
     }
