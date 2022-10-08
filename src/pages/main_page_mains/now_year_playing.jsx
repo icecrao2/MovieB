@@ -46,10 +46,6 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
     []
   );
 
-  //포스터 클릭 핸들러
-  const onClickPoster = (evt) => {
-    console.log(evt.target);
-  }
 
   //찜하기 버튼 핸들러
   const onClickDibdOn = (evt) => {
@@ -88,7 +84,7 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
             </div>
 
             <Link to={`${pages.link}/${movie.id}`} className={styles.link} >
-              <img onClick={onClickPoster} className={styles.poster}
+              <img className={styles.poster}
                 src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}></img>
             </Link>
           </div>)
