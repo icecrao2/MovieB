@@ -1,23 +1,36 @@
-import { getNowPlayingMovie } from '../../api/get_movie.js';
 import { useEffect } from 'react';
 import styles from '../../styles/now_playing/now_playing.module.css';
 
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { writeDibedData } from '../../firebase/DB/databaseAccess.js';
 
 import { useParams } from "react-router-dom";
-
+import { getDetailMovie } from '../../api/get_movie.js';
+import { movie_detail } from '../../hooks/movie_detail.js';
 
 export const Detail = ({ dibed_list }) => {
 
   const { dibedList, handleDibedList } = dibed_list;
-  const { id } = useParams()
+  const { movieDetail, handlemovieDetail } = movie_detail();
 
-  console.log(id);
+  const { id } = useParams();
+
+  useEffect(
+    () => {
+      async function getMovie() {
+        const movie = await getDetailMovie(id);
+        handlemovieDetail(movie);
+      }
+      getMovie();
+    },
+    []
+  );
+
+  console.log(movieDetail);
 
   return (
     <div>
+      <h1>{movieDetail.title}</h1>
     </div>
   );
 }

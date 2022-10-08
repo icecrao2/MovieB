@@ -25,12 +25,12 @@ export const deleteDibedData = (email, key) => {
 }
 
 
-export const getDibedData = async (email) => {
+export const getDibedData = async (email, key = '') => {
 
   const dbRef = ref(database);
 
 
-  return await get(child(dbRef, `users/${email}/key`)).then((snapshot) => {
+  return await get(child(dbRef, `users/${email}/key/${key}`)).then((snapshot) => {
     if (snapshot.exists()) {
       return Object.keys(snapshot.val());
     } else {

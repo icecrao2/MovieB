@@ -21,3 +21,19 @@ export const getNowPlayingMovie = async (
 
   return result;
 };
+
+
+export const getDetailMovie = async (id) => {
+
+  const defaultUrl = api.url;
+  const api_key = api.api_key;
+  const language = api.language;
+
+  const url = `${defaultUrl}/${id}?api_key=${api_key}&language=${language}`;
+
+
+  const response = await fetch(url);
+  const result = await response.json();
+
+  return result;
+}

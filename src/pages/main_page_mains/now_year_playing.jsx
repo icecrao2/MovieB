@@ -69,7 +69,6 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
       dibedOff(evt) : dibedOn(evt);
   }
 
-  console.log(dibedList);
   
   return (
     <main className={styles.main}>
