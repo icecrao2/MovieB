@@ -6,6 +6,7 @@ import { dibed_list } from '../hooks/dibed_list.js';
 import {
   NowPlaying,
   Detail,
+  Mine,
 } from '../pages';
 
 
@@ -21,6 +22,7 @@ export const MainPage = ({ user }) => {
   return (
     <div style={{
       width: '100%',
+      paddingBottom: '50px',
     }}>
       < Routes >
         <Route path='now_playing'
@@ -36,7 +38,17 @@ export const MainPage = ({ user }) => {
             dibed_list={dibed}
           />
         } >
+        </Route>
 
+        
+        <Route path='mine' element={
+          <Mine
+            movieList={movieList}
+            handleMovieList={handleMovieList}
+            dibed_list={dibed}
+          />
+        } >
+          
         </Route>
       </ Routes >
     </div>

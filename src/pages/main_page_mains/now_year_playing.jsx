@@ -48,15 +48,15 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
 
   const dibedOff = (evt) => {
     const id = evt.currentTarget.id;
-    
+
     deleteDibedData(user.replace('.', '*'), id);
-    handleDibedList((original) => [...original].filter((data) =>  data !== id));
+    handleDibedList((original) => [...original].filter((data) => data !== id));
     evt.currentTarget.style.color = 'black';
   }
-  
+
   const dibedOn = (evt) => {
     const id = evt.currentTarget.id;
-    
+
     writeDibedData(user.replace('.', '*'), id);
     handleDibedList((original) => [...original, id.toString()]);
     evt.currentTarget.style.color = 'yellow';
@@ -69,7 +69,7 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
       dibedOff(evt) : dibedOn(evt);
   }
 
-  
+
   return (
     <main className={styles.main}>
 
@@ -83,16 +83,16 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
 
               {
                 dibedList.includes(movie.id.toString()) ?
-                <span id={movie.id}
-                  style={{ color: 'yellow' }}
-                  onClick={onClickDibdOn}>
-                  <FontAwesomeIcon icon={faStar} size="lg" />
-                </span>
-                :
-                <span id={movie.id}
-                  onClick={onClickDibdOn}>
-                  <FontAwesomeIcon icon={faStar} size="lg" />
-                </span>
+                  <span id={movie.id}
+                    style={{ color: 'yellow' }}
+                    onClick={onClickDibdOn}>
+                    <FontAwesomeIcon icon={faStar} size="lg" />
+                  </span>
+                  :
+                  <span id={movie.id}
+                    onClick={onClickDibdOn}>
+                    <FontAwesomeIcon icon={faStar} size="lg" />
+                  </span>
 
               }
 

@@ -17,6 +17,7 @@
   flex:1;
   min-width:300px;
   transition: 0.2s ease-in-out;
+  max-width:429px;
 }
 
 .poster:hover{
