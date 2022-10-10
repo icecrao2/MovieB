@@ -21,6 +21,7 @@ const user_manager = (initialUser = '') => {
     if (!platform) return;
 
     if (platform === 'sign in with google') {
+      console.log(platform);
       signInWithRedirect(auth, googleProvider);
     }
     else if (platform === 'sign in with github') {
