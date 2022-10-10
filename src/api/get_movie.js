@@ -19,7 +19,7 @@ export const getNowPlayingMovie = async (
   const response = await fetch(url);
   const result = await response.json();
 
-  return result;
+  return result.results;
 };
 
 

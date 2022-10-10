@@ -5,29 +5,24 @@ import styles from '../../styles/now_playing/now_playing.module.css';
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  writeDibedData,
-  deleteDibedData,
   getDibedData,
 } from '../../firebase/DB/databaseAccess.js';
 import { pages } from '../../json/navs.js';
 import {
   Link,
 } from 'react-router-dom';
+import { emailController } from '../../js/localstorage_manager.js';
 
 
 export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
 
-
-  const { dibedList, handleDibedList } = dibed_list;
-  const user = window.localStorage.getItem('email');
-
+  const { dibedList, handleDibedList, onClickDibdOn } = dibed_list;
+  const user = emailController().emailConverter();
 
   useEffect(
     () => {
       async function getDibedList() {
-
-        const value = await getDibedData(user.replace('.', '*')) || [];
-        handleDibedList(value);
+        handleDibedList(await getDibedData(user) || []);
       }
       getDibedList();
     },
@@ -37,38 +32,12 @@ export const NowPlaying = ({ movieList, handleMovieList, dibed_list }) => {
   useEffect(
     () => {
       async function setMovieList() {
-        const data = await getNowPlayingMovie();
-        handleMovieList(data.results);
+        handleMovieList(await getNowPlayingMovie());
       }
       setMovieList();
     },
     []
   );
-
-
-  const dibedOff = (evt) => {
-    const id = evt.currentTarget.id;
-
-    deleteDibedData(user.replace('.', '*'), id);
-    handleDibedList((original) => [...original].filter((data) => data !== id));
-    evt.currentTarget.style.color = 'black';
-  }
-
-  const dibedOn = (evt) => {
-    const id = evt.currentTarget.id;
-
-    writeDibedData(user.replace('.', '*'), id);
-    handleDibedList((original) => [...original, id.toString()]);
-    evt.currentTarget.style.color = 'yellow';
-  }
-
-  //찜하기 버튼 핸들러
-  const onClickDibdOn = (evt) => {
-
-    dibedList.includes(evt.currentTarget.id.toString()) ?
-      dibedOff(evt) : dibedOn(evt);
-  }
-
 
   return (
     <main className={styles.main}>

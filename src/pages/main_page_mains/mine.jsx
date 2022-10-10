@@ -9,12 +9,13 @@ import {
 } from 'react-router-dom';
 import { pages } from '../../json/navs.js';
 import { getDetailMovie } from '../../api/get_movie.js';
+import { emailController } from '../../js/localstorage_manager.js';
 
 export const Mine = ({ movieList, handleMovieList, dibed_list }) => {
 
 
   const { dibedList, handleDibedList } = dibed_list;
-  const user = window.localStorage.getItem('email');
+  const user = emailController().emailConverter();
 
 
   useEffect(
@@ -23,12 +24,9 @@ export const Mine = ({ movieList, handleMovieList, dibed_list }) => {
 
       async function getDibedList() {
 
-        const value = await getDibedData(user.replace('.', '*')) || [];
-
-        await handleDibedList(value);
+        await handleDibedList(await getDibedData(user) || []);
 
         dibedList.map(async (key) => {
-
           const movie = await getDetailMovie(key);
           handleMovieList((original) => [...original, movie]);
         });
@@ -36,7 +34,6 @@ export const Mine = ({ movieList, handleMovieList, dibed_list }) => {
       }
       getDibedList();
     },
-
     [user]
   );
 

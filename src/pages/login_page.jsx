@@ -6,18 +6,17 @@ import {
 
 import { useEffect } from 'react';
 import { page_mover } from '../hooks/page_mover.js';
+import { emailController } from '../js/localstorage_manager.js';
 
-export const LoginPage = ({ user, login, checkAuth }) => {
+export const LoginPage = ({ user, login }) => {
 
   const { movePage } = page_mover();
-
+  const { setEmail } = emailController();
 
   useEffect(() => {
-    //checkAuth();
-
     if (user) {
+      setEmail(user.email);
       movePage('/main/now_playing');
-      window.localStorage.setItem('email', user.email);
     }
     else {
     }
@@ -28,18 +27,6 @@ export const LoginPage = ({ user, login, checkAuth }) => {
     evt.preventDefault();
     login(evt.currentTarget.children[1].innerText);
   }
-
-  /*
-  const onLogout = () => {
-    logout(() => {
-      console.log('success');
-    },
-      () => {
-        console.log('failed!');
-      });
-  }
-  */
-
 
   const style = {
     display: 'flex',
