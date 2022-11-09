@@ -1,21 +1,24 @@
-## site URL
-https://movieb.icecrao2.repl.co/
+## MovieB -영화추천사이트-
+[MovieB](https://movieb.netlify.app/main/)
 
+- 시작
 
-## Running React on Repl.it
+npm start
 
-[React](https://reactjs.org/) is a popular JavaScript library for building user interfaces.
+- 사용된 기술
 
-[Vite](https://vitejs.dev/) is a blazing fast frontend build tool that includes features like Hot Module Reloading (HMR), optimized builds, and TypeScript support out of the box.
+  - React.js
+  - ES6
+  - HTML/CSS
+  - firebase
+ 
+- 프로젝트 개요
 
-Using the two in conjunction is one of the fastest ways to build a web app.
+현재 대한민국에서 상영중인 영화목록을 불러오고 그 영화 정보를 사용자에게 보여주는 웹사이트입니다.
+또한 상영이 끝나도 다시 기억해낼 수 있게 좋아요로 내 영화에 영화들을 저장 할 수 있습니다.
 
-### Getting Started
-- Hit run
-- Edit [App.jsx](#src/App.jsx) and watch it live update!
+- 기능
 
-By default, Replit runs the `dev` script, but you can configure it by changing the `run` field in the [configuration file](#.replit). Here are the vite docs for [serving production websites](https://vitejs.dev/guide/build.html)
+영화 목록 불러오기, 영화 상세정보 띄우기,  google github 로그인, 영화 기록하기
 
-### Typescript
-
-Just rename any file from `.jsx` to `.tsx`. You can also try our [TypeScript Template](https://replit.com/@replit/React-TypeScript)
+- 
