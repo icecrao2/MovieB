@@ -21,4 +21,8 @@ npm start
 
 영화 목록 불러오기, 영화 상세정보 띄우기,  google github 로그인, 영화 기록하기
 
-- 
+- 사진
+
+![img1](/MovieB.png)
+![img2](/MovieB2.png)
+![img3](/MovieB1.png)
