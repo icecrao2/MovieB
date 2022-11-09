@@ -25,4 +25,4 @@ npm start
 
 ![img1](/MovieB.PNG)
 ![img2](/MovieB2.PNG)
-![img3](/MovieB1.PNG)
+![img3](/MovieB3.PNG)
