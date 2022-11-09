@@ -23,6 +23,6 @@ npm start
 
 - 사진
 
-![img1](/MovieB.png)
-![img2](/MovieB2.png)
-![img3](/MovieB1.png)
+![img1](/MovieB.PNG)
+![img2](/MovieB2.PNG)
+![img3](/MovieB1.PNG)
